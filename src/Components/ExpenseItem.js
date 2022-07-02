@@ -1,3 +1,4 @@
+import "./ExpenseItem.css";
 function ExpenseItem () {
     return <div className= "expense-item">
             <div>March 28th 2022</div>
