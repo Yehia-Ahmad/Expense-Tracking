@@ -1,19 +1,27 @@
-import React from "react";
+import React , { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 import "./Style/ExpenseItem.css";
 
 const ExpenseItem = (props)  => {
+
+  const [title , setTitel] = useState(props.title);
+
+  console.log("ExpenseItem evaluated by react");
+  
+  const changeHandler = () => {
+    setTitel("updated!");
+    console.log(title);
+  }
   return (
-    //   <div className="expense-item">
     <Card className='expense-item'>
       <ExpenseDate date={props.date} />
       <div className="expense-item__discription">
-        <h2>{props.title}</h2>
+        <h2>{title}</h2>
         <div className="expense-item__price">${props.amount}</div>
       </div>
+      <button onClick={changeHandler}>Change Title</button>
     </Card>
-    // {/* </div> */}
   );
 }
 
