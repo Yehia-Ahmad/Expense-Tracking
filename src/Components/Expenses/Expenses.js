@@ -2,11 +2,14 @@ import React from "react";
 import "./Style/Expenses.css";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
+import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 
 const Expenses = (props) => {
 
   return (
-    // <div className="expenses">
+    <div>
+      <ExpensesFilter/>
+    
     <Card className="expenses">
       <ExpenseItem
         title={props.items[0].title}
@@ -29,7 +32,7 @@ const Expenses = (props) => {
         amount={props.items[3].amount}
       />
       </Card>
-      // </div>
+      </div>
   );
 }
 

@@ -2,7 +2,7 @@ import React , { useState } from 'react';
 // import ExpenseItem from '../Expenses/ExpenseItem';
 import './Style/ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle , setEnteredTitle] = useState('');
     const [enteredAmount , setEnteredAmount] = useState('');
     const [enteredDate , setEnteredDate] = useState('');
@@ -28,22 +28,11 @@ const ExpenseForm = () => {
     }
 
     const amountChangeHandler = (event) => {
-        // console.log(event.target.value);
-        // console.log(enteredAmount);
         setEnteredAmount(event.target.value);
-        // setUserInput({
-        //     ...userInput ,
-        //     enteredAmount:event.target.value
-        // })
     }
 
     const dateChangeHandler = (event) => {
-        console.log(enteredDate);
         setEnteredDate(event.target.value);
-        // setUserInput({
-        //     ...userInput,
-        //     enteredDate:event.target.value
-        // })
     }
 
     const submitForm = (event) => {
@@ -53,11 +42,10 @@ const ExpenseForm = () => {
             amount: enteredAmount,
             date: new Date(enteredDate)
         }
-        console.log(expenseItem);
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate ('');
-        // return <ExpenseItem title = {enteredTitle} date = {enteredDate} amount = {enteredAmount} />
+        props.onSaveExpenseData(expenseItem);
     }
 
     return <form onSubmit={submitForm}>
