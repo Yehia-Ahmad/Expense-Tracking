@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Expenses from "./Components/Expenses/Expenses";
+// import ExpensesFilter from "./Components/ExpensesFilter/ExpensesFilter";
 import NewExpense from "./Components/NewExpense/NewExpense";
 
 const App = () => {
@@ -26,16 +27,32 @@ const App = () => {
     },
   ];
 
+  let filterExpenses = [];
+
   const addExpenseHandler = expense => {
     console.log('In App.JS');
     expenses.push(expense)
     console.log(expenses);
   }
+  
+  const addFinalExpenseFilterHandler = (year) => {
+    console.log(year);
+    console.log(filterExpenses);
+    for(let i = 0; i <= expenses.length; i++){
+      let inside = expenses[i].date.getFullYear() === year;
+      if(inside){
+        filterExpenses.push(expenses[i])
+      }
+    }
+    
+  }
 
-  return (
+
+  
+  return(
     <div>
       <NewExpense onAddExpense = {addExpenseHandler} />
-      <Expenses items = {expenses} />
+      <Expenses items = {expenses} onFinalAddExpenseFilter = {addFinalExpenseFilterHandler} />
     </div>
   );
 }

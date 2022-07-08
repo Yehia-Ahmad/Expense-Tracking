@@ -6,11 +6,16 @@ import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 
 const Expenses = (props) => {
 
+  const addExpenseFilterHandler = (year) => {
+    console.log(year);
+    props.onFinalAddExpenseFilter(year);
+  }
+
   return (
     <div>
     
     <Card className="expenses">
-      <ExpensesFilter/>
+      <ExpensesFilter onAddExpenseFilter = {addExpenseFilterHandler}/>
       <ExpenseItem
         title={props.items[0].title}
         date={props.items[0].date}
