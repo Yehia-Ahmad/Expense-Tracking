@@ -7,24 +7,8 @@ const ExpenseForm = (props) => {
     const [enteredAmount , setEnteredAmount] = useState('');
     const [enteredDate , setEnteredDate] = useState('');
 
-    // const [userInput , setUserInput] = useState({
-    //     enteredTitle: '',
-    //     enteredAmount: '',
-    //     enteredDate: '',
-    // });
-
     const titleChangeHandler = (event) => {
-        // console.log(event.target.value);
-        // console.log(enteredTitle);
         setEnteredTitle(event.target.value);
-        // setUserInput({
-        //     ...userInput,
-        //     enteredTitle: event.target.value
-        // })
-        // setUserInput((pervState)=>{
-        //     console.log(pervState);
-        //     return {...pervState , enteredTitle : event.target.value};
-        // })
     }
 
     const amountChangeHandler = (event) => {
