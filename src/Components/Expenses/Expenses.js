@@ -1,30 +1,33 @@
 import React , { useState }  from "react";
-import "./Style/Expenses.css";
-// import ExpenseItem from "./ExpenseItem";
-import ExpensesList from "./ExpensesList";
+
 import Card from "../UI/Card";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
+import ExpensesList from "./ExpensesList";
+import ExpenseChart from "./ExpenseChart";
+import "./Style/Expenses.css";
 
 const Expenses = (props) => {
 
-  const [lastItems , setYearItems] = useState(props.items);
+  const [fillteredYear , setFillteredYear] = useState(props.items);
 
-  const addExpenseFilterHandler = (filteredExpense) => {
-    // console.log(filteredExpense);
-    // console.log(lastItems);
-    setYearItems([...filteredExpense]);
+  const addExpenseFilterHandler = (selectedYear) => {
+    // console.log(selectedYear);
+    // console.log(fillteredYear);
+    setFillteredYear(selectedYear);
   }
   
   return (
-    <li>
+    <div>
       <Card className="expenses">
         
         <ExpensesFilter items = {props.items} onAddExpenseFilter = {addExpenseFilterHandler}/>
+
+        <ExpenseChart expenses = {fillteredYear}/>
         
-        <ExpensesList items = {lastItems} />
+        <ExpensesList items = {fillteredYear} />
         
       </Card>
-    </li>
+    </div>
   );
 }
 
