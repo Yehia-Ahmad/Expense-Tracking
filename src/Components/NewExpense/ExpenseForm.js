@@ -32,6 +32,10 @@ const ExpenseForm = (props) => {
         props.onSaveExpenseData(expenseItem);
     }
 
+    // const closeForm = () => {
+    //     props.displayForm();
+    // }
+
     return <form onSubmit={submitForm}>
         <div className='new-expense__controls'>
             <div className='new-expense__control'>
@@ -48,6 +52,7 @@ const ExpenseForm = (props) => {
             </div>
         </div>
         <div className='new-expense__actions'>
+            <button type='button' onClick={props.onClose}>Cancel</button>
             <button type='submit' onChange={submitForm}>Add Expense</button>
         </div>
     </form>
