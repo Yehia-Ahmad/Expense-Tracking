@@ -6,9 +6,12 @@ const ExpensesFilter = (props) => {
 
 
   const handleChange = (e) => {
-    // console.log(value);
-    // console.log(+e.target.value)
-    props.onAddExpenseFilter(+e.target.value);
+    console.log(+e.target.value);
+    const filteredExpense = props.items.filter( (item) => (
+      item.date.getFullYear() === +e.target.value
+    ))
+    // console.log(filteredExpense);
+    props.onAddExpenseFilter(filteredExpense);
   };
 
   return (

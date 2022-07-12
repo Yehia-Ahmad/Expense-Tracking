@@ -1,4 +1,4 @@
-import React from "react";
+import React , { useState }  from "react";
 import "./Style/Expenses.css";
 import ExpenseItem from "./ExpenseItem";
 import Card from "../UI/Card";
@@ -6,9 +6,12 @@ import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 
 const Expenses = (props) => {
 
-  const addExpenseFilterHandler = (year) => {
-    console.log(year);
-    props.onFinalAddExpenseFilter(year);
+  const [lastItems , setYearItems] = useState(props.items);
+
+  const addExpenseFilterHandler = (filteredExpense) => {
+    console.log(filteredExpense);
+    console.log(lastItems);
+    setYearItems([...filteredExpense]);
   }
 
   return (
@@ -16,10 +19,10 @@ const Expenses = (props) => {
     
     <Card className="expenses">
       
-      <ExpensesFilter onAddExpenseFilter = {addExpenseFilterHandler}/>
+      <ExpensesFilter items = {props.items} onAddExpenseFilter = {addExpenseFilterHandler}/>
       
-      {props.items.map((expense , key) => (
-        <ExpenseItem key = {key } title = {expense.title} date = {expense.date} amount = {expense.amount} />
+      {lastItems.map((expense) => (
+        <ExpenseItem key = {expense.id} title = {expense.title} date = {expense.date} amount = {expense.amount} />
       ))}
       
       </Card>
